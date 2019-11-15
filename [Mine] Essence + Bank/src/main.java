@@ -15,11 +15,10 @@ import java.util.Random;
 
 
 /**
- * Created by Sean Frazier on 2/4/2016.
- * Added bank by JH.
+ * Created by JH on 11/14/2019.
  */
 
-@ScriptManifest(author = "JH", logo = "", info ="Mines Tin till full. Does bank" , version = 1.0 , name = "[Mine]Tin Bank v1.0")
+@ScriptManifest(author = "JH", logo = "", info ="Essence Miner. Does bank" , version = 1.0 , name = "[Mine]Essence Bank v1.0")
 public class main extends Script {
 
     private int i =1;
@@ -46,6 +45,12 @@ public class main extends Script {
     }
 
 
+    public void goToWizard(){
+        Area shopArea = new Area(3255, 3401, 3252, 3399);
+        getNpcs().closest("Aubury").interact("Teleport");
+
+    }
+
     public int onLoop() throws InterruptedException {
 
         antiBan();
@@ -57,23 +62,23 @@ public class main extends Script {
             i =0;
         }
 
-        //entire mining pit
-        Area treeArea = new Area(3290, 3362, 3282, 3369);
+        goToWizard();
+
+        //Start mining
+        Area miningArea = new Area(10718, 6654, 10717, 6655);
 
         if(!getInventory().isFull()){
             //chop
-            if(treeArea.contains(myPlayer()))
+            if(miningArea.contains(myPlayer()))
             {
-                //Entity Rocks = objects.closest(10943, 11161); //Copper
-                Entity Rocks = objects.closest(11360, 11361); //Tin
+                Entity Essence = objects.closest(34773);
 
-                if(Rocks != null) {
-                    if(Rocks.isVisible()) {
+                if(Essence != null) {
+                    if(Essence.isVisible()) {
                         if(!myPlayer().isAnimating()) {
                             if(!myPlayer().isMoving()) {
 
-                                Rocks.interact("Mine");
-                                //i++;
+                                Essence.interact("Mine");
 
                                 sleep(random(1500, 15000));
                             }
@@ -84,7 +89,7 @@ public class main extends Script {
                 }
             } else
             {
-                getWalking().webWalk(treeArea);
+                getWalking().webWalk(miningArea);
             }
 
         }
