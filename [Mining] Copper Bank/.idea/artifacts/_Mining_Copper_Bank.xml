@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[Mining]Copper Bank">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="[Mining]Copper Bank.jar">
+      <element id="module-output" name="[Mining] Copper Bank" />
+    </root>
+  </artifact>
+</component>
