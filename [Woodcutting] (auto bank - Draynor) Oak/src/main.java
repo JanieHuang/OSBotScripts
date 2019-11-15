@@ -59,7 +59,8 @@ public class main extends Script {
 
 
                 }else {
-                    Area actionArea = new Area(3099, 3241, 3102, 3245);
+                   // Area actionArea = new Area(3099, 3241, 3102, 3245); //Draynor
+                    Area actionArea = new Area(3168, 3424,3165, 3409);
                     getWalking().webWalk(actionArea);
                     if (object1 != null) {
                         if (object1.isVisible()) {
@@ -72,10 +73,11 @@ public class main extends Script {
             }
         } else {
             //bank
-            Area bankArea = new Area(3092, 3240, 3093, 3245);
+            //Area bankArea = new Area(3092, 3240, 3093, 3245);
+            Area bankArea = new Area(3185, 3438, 3185, 3443);
             if (bankArea.contains(myPlayer())) {
-                Entity bankBooth = objects.closest(6943);
-
+               // Entity bankBooth = objects.closest(6943);
+                Entity bankBooth = objects.closest(10583);
                 if (bank.isOpen()) {
                     bank.depositAllExcept(keep1,keep2,keep3,keep4,keep5);
                 } else {

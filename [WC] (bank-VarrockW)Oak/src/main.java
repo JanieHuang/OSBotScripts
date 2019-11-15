@@ -101,7 +101,7 @@ public class main extends Script {
             //bank
             Area bankArea = new Area(3185, 3436, 3185, 3436);
             if (bankArea.contains(myPlayer())) {
-                Entity bankBooth = objects.closest(7478);
+                Entity bankBooth = objects.closest(34810);
 
                 if (bank.isOpen()) {
                     bank.depositAllExcept(keep1,keep2,keep3,keep4,keep5);
@@ -147,18 +147,6 @@ public class main extends Script {
             if ((rand > 2400) && (rand < 3000)) {
                 interaction = "Antiban, Camera Movement";
                 this.camera.moveYaw(random(0, 360));
-            }
-            if ((rand > 3000) && (rand < 3500)) {
-                interaction = "Antiban, Random Mouse Movement";
-                this.mouse.moveRandomly(random(0, 2000));
-            }
-            if ((rand > 4000) && (rand < 4500)) {
-                interaction = "Antiban, Random Mouse Movement";
-                this.mouse.moveRandomly(random(0, 1000));
-            }
-            if ((rand > 5000) && (rand < 5500)) {
-                interaction = "Antiban, Random Mouse Movement";
-                this.mouse.moveRandomly();
             }
             if ((rand > 6000) && (rand < 6200)) {
                 interaction = "Antiban, Opening Tab";
@@ -313,7 +301,7 @@ public class main extends Script {
             if ((rand > 27000) && (rand < 27500)) {
                 List<RS2Object> o = objects.getAll();
                 int guess = new Random().nextInt(o.size());
-                o.get(guess).examine();
+                o.get(guess);
             }
             if ((rand > 28000) && (rand < 30000)) {
                 List<NPC> o = npcs.getAll();
