@@ -1,3 +1,5 @@
+import org.osbot.E;
+import org.osbot.rs07.api.Objects;
 import org.osbot.rs07.api.map.Area;
 import org.osbot.rs07.api.model.Entity;
 import org.osbot.rs07.api.model.NPC;
@@ -6,106 +8,95 @@ import org.osbot.rs07.api.model.RS2Object;
 import org.osbot.rs07.api.ui.Tab;
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
+import sun.reflect.generics.tree.Tree;
 
-import javax.swing.*;
-import javax.xml.bind.annotation.XmlElementDecl;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Random;
 
 
 /**
- * Created by JH Nov 21, 2019
+ * Created by JH on 11/21/2019
  */
 
-@ScriptManifest(author = "JH", logo = "", info = "Cuts oaks west of varrock west bank. Banks upon full inventory", version = 1.0, name = "[Wood] Oak Bank v1.1")
+@ScriptManifest(author = "JH", logo = "", info ="Mines Iron till full. Does bank" , version = 1.0 , name = "[Mine] Iron Bank v1.0")
 public class main extends Script {
-    private String interaction = "";
 
-    private int i = 1;
-    private String keep0;
+    private int i =1;
     private String keep1;
     private String keep2;
     private String keep3;
     private String keep4;
     private String keep5;
-    GUI g = new GUI();
-
-    public boolean guiWait = true;
-    private JComboBox treeToCut;
-    private JButton startButton;
-    String treeChosen;
-
+    private String keep6;
 
     @Override
 
-    public void onStart() {
-
-        this.keep0 = "Bronze axe" ;
-        this.keep1 = "Rune axe" ;
-        this.keep2 = "Iron axe";
-        this.keep3 = "Steel axe";
-        this.keep4 = "Mithril axe";
-        this.keep5 = "Adamant axe";
-
-     /*  g.setVisible(true);
-        g.setBounds(50,50, 250, 250);
-
-      while(guiWait) {
-
-      }
-*/
+    public void onStart(){
+        this.keep1 = "Rune pickaxe" ;
+        this.keep2 = "Iron pickaxe";
+        this.keep3 = "Steel pickaxe";
+        this.keep4 = "Mithril pickaxe";
+        this.keep5 = "Adamant pickaxe";
+        this.keep6 = "Bronze pickaxe" ;
     }
 
-    public void onExit() {
+    public void onExit(){
 
     }
 
 
     public int onLoop() throws InterruptedException {
 
-
         antiBan();
-        stealthMusic();
+        stealthDance();
 
 
-        if (i >= 5) {
-            camera.moveYaw(random(-180, 180));
-            i = 0;
+        if (i >= 5){
+            camera.moveYaw(random(-180,180));
+            i =0;
         }
-        if (!getInventory().isFull()) {
 
-            //Fish
+        //entire mining pit
+        Area treeArea = new Area(3290, 3362, 3282, 3369);
 
-            Entity object1 = objects.closest("Oak");
-            if (object1 != null) {
-                if (object1.isVisible()) {
-                    action();
+        if(!getInventory().isFull()){
+            //chop
+            if(treeArea.contains(myPlayer()))
+            {
+                //Entity Rocks = objects.closest(10943, 11161); //Copper
+                //Entity Rocks = objects.closest(11360, 11361); //Tin
+                Entity Rocks = objects.closest(11365, 11391); //Iron
 
+                if(Rocks != null) {
+                    if(Rocks.isVisible()) {
+                        if(!myPlayer().isAnimating()) {
+                            if(!myPlayer().isMoving()) {
 
+                                Rocks.interact("Mine");
+                                //i++;
 
-                }else {
-                    Area actionArea = new Area(3134, 3432, 3134, 3433);
-                    getWalking().webWalk(actionArea);
-                    if (object1 != null) {
-                        if (object1.isVisible()) {
-                            action();
+                                sleep(random(1500, 15000));
+                            }
                         }
+
+
                     }
                 }
-
-                //walk to fish area
+            } else
+            {
+                getWalking().webWalk(treeArea);
             }
-        } else {
+
+        }
+        else {
             //bank
-            Area bankArea = new Area(3185, 3436, 3185, 3436);
+            Area bankArea = new Area(3250, 3422, 3256, 3419);
+
             if (bankArea.contains(myPlayer())) {
-                Entity bankBooth = objects.closest(34810);
+                Entity bankBooth = objects.closest(10583);
 
                 if (bank.isOpen()) {
-                    bank.depositAllExcept(keep0, keep1, keep2, keep3, keep4, keep5);
+                    bank.depositAllExcept(keep1, keep2, keep3, keep4, keep5, keep6);
                 } else {
                     if (bankBooth != null) {
                         if (bankBooth.isVisible()) {
@@ -117,11 +108,11 @@ public class main extends Script {
 
                 sleep(random(700, 1500));
                 //walk to bank
-            } else {
+            } else
+            {
                 getWalking().webWalk(bankArea);
             }
         }
-        //move camera
 
         return 0;
     }
@@ -131,6 +122,7 @@ public class main extends Script {
             Random generator = new Random();
             int click = generator.nextInt(10);
 
+            String interaction = "";
             if ((click > 7) && (myPlayer().isMoving())) {
                 interaction = "Antiban, Mouse Right-Click";
                 this.mouse.click(true);
@@ -148,6 +140,15 @@ public class main extends Script {
             if ((rand > 2400) && (rand < 3000)) {
                 interaction = "Antiban, Camera Movement";
                 this.camera.moveYaw(random(0, 360));
+            }
+            if ((rand > 3000) && (rand < 3500)) {
+                interaction = "Antiban, Random Mouse Movement";
+            }
+            if ((rand > 4000) && (rand < 4500)) {
+                interaction = "Antiban, Random Mouse Movement";
+            }
+            if ((rand > 5000) && (rand < 5500)) {
+                interaction = "Antiban, Random Mouse Movement";
             }
             if ((rand > 6000) && (rand < 6200)) {
                 interaction = "Antiban, Opening Tab";
@@ -302,7 +303,6 @@ public class main extends Script {
             if ((rand > 27000) && (rand < 27500)) {
                 List<RS2Object> o = objects.getAll();
                 int guess = new Random().nextInt(o.size());
-                o.get(guess);
             }
             if ((rand > 28000) && (rand < 30000)) {
                 List<NPC> o = npcs.getAll();
@@ -357,92 +357,6 @@ public class main extends Script {
         } catch (Exception e) {
 
         }
-    }
-
-    //fish
-    public void action() throws InterruptedException {
-
-        Entity object1 = objects.closest("Oak");
-
-
-        if (!myPlayer().isAnimating()) {
-            if (!myPlayer().isMoving()) {
-
-                object1.interact("Chop Down");
-                i++;
-
-            }
-        }
-
-        sleep(random(1500, 15000));
-
-
-    }
-
-    class GUI extends JFrame {
-
-
-        private void initComponents() {
-
-
-            treeToCut = new JComboBox();
-            startButton = new JButton();
-
-
-
-        }
-
-        public GUI(){
-            initComponents();
-
-            JFrame frame = new JFrame();
-            Container pane = frame.getContentPane();
-            pane.setLayout(new BorderLayout());
-            String trees []= {"Tree", "Oak", "Willow"};
-            JComboBox box1 = new JComboBox(trees);
-            pane.add(new JButton("Start"), BorderLayout.NORTH);
-            pane.add(box1, BorderLayout.SOUTH);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.pack();
-            frame.setVisible(true);
-
-
-            startButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String chosen = treeToCut.getSelectedItem().toString();
-                    if(chosen.equals("Oak")){
-
-                        treeChosen = "Oak";
-                        guiWait = false;
-                        g.dispose();
-
-                    }else if (chosen.equals("Willow")){
-
-                        treeChosen = "Willow";
-                        guiWait = false;
-                        g.dispose();
-
-                    }else if(chosen.equals(("Tree"))){
-                        treeChosen = "Tree";
-                        guiWait = false;
-                        g.dispose();
-                    }
-
-
-
-
-                    guiWait = false;
-                    g.dispose();
-                }
-
-
-            });
-        }
-
-
-
-
     }
 
 
