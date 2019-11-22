@@ -1,6 +1,7 @@
 import org.osbot.E;
 import org.osbot.rs07.api.Objects;
 import org.osbot.rs07.api.map.Area;
+import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.model.Entity;
 import org.osbot.rs07.api.model.NPC;
 import org.osbot.rs07.api.model.Player;
@@ -18,7 +19,7 @@ import java.util.Random;
  * Created by JH on 11/14/2019.
  */
 
-@ScriptManifest(author = "JH", logo = "", info ="Essence Miner. Does bank" , version = 1.0 , name = "[Mine]Essence Bank v1.0")
+@ScriptManifest(author = "JH", logo = "", info ="Essence Miner. Does bank" , version = 1.0 , name = "[Mine]Essence Bank v1.60")
 public class main extends Script {
 
     private int i =1;
@@ -45,12 +46,6 @@ public class main extends Script {
     }
 
 
-    public void goToWizard(){
-        Area shopArea = new Area(3255, 3401, 3252, 3399);
-        getNpcs().closest("Aubury").interact("Teleport");
-
-    }
-
     public int onLoop() throws InterruptedException {
 
         antiBan();
@@ -62,64 +57,113 @@ public class main extends Script {
             i =0;
         }
 
-        goToWizard();
-
         //Start mining
-        Area miningArea = new Area(10718, 6654, 10717, 6655);
+
+        Area shopArea = new Area(3254, 3399, 3251, 3404);
+        Area bankArea = new Area(3250, 3422, 3256, 3419);
+        //Area miningArea = new Area(10907, 6240, 10914, 6233);
+        //Area portalArea = new Area(10904, 6238, 10906, 6236);
+        //Area portalArea = new Area(10906, 6236, 10904, 6238);
 
         if(!getInventory().isFull()){
-            //chop
-            if(miningArea.contains(myPlayer()))
+            if(bankArea.contains(myPlayer()))
             {
-                Entity Essence = objects.closest(34773);
-
-                if(Essence != null) {
-                    if(Essence.isVisible()) {
-                        if(!myPlayer().isAnimating()) {
-                            if(!myPlayer().isMoving()) {
-
-                                Essence.interact("Mine");
-
-                                sleep(random(1500, 15000));
-                            }
-                        }
-
-
-                    }
-                }
+                getWalking().webWalk(shopArea);
+            }
+            if(shopArea.contains(myPlayer()))
+            {
+                getNpcs().closest("Aubury").interact("Teleport");
             } else
             {
-                getWalking().webWalk(miningArea);
+                mine();
             }
 
         }
         else {
-            //bank
-            Area bankArea = new Area(3250, 3422, 3256, 3419);
-
-            if (bankArea.contains(myPlayer())) {
-                Entity bankBooth = objects.closest(10583);
-
-                if (bank.isOpen()) {
-                    bank.depositAllExcept(keep1, keep2, keep3, keep4, keep5, keep6);
-                } else {
-                    if (bankBooth != null) {
-                        if (bankBooth.isVisible()) {
-                            bankBooth.interact("Bank");
-                            sleep(random(1500, 15000));
-                        }
-                    }
-                }
-
-                sleep(random(700, 1500));
-                //walk to bank
-            } else
+            log("Inventory Full");
+            if(shopArea.contains(myPlayer()))
             {
+                log("In shop area, walking to bank");
+                //Teleport to bank
                 getWalking().webWalk(bankArea);
             }
+            else if(!bankArea.contains(myPlayer()) && !shopArea.contains(myPlayer()))
+            {
+                log("Not in bank or shop, find portal");
+                log("Bank: " + bankArea.contains(myPlayer()));
+                log("Shop: " + shopArea.contains(myPlayer()));
+                    Entity portalEntity = null;
+                    NPC portalNpc = getNpcs().closestThatContains("Portal");
+                    RS2Object portalObj = getObjects().closestThatContains("Portal");
+
+                    if(portalNpc != null)
+                    {
+                        portalEntity = portalNpc;
+                    }
+
+                    if(portalObj != null)
+                    {
+                        portalEntity = portalObj;
+                    }
+
+                    if(portalEntity != null)
+                    {
+                        portalEntity.interact("Exit", "Use");
+                    }
+
+            } else
+            {
+                log("Go bank");
+                bank(bankArea);
+            }
+
         }
 
         return 0;
+    }
+
+    public void mine() throws InterruptedException
+    {
+        Entity Essence = objects.closest(34773);
+        log(Essence);
+        if(Essence != null && Essence.isVisible() &&
+                !myPlayer().isAnimating() && !myPlayer().isMoving())
+        {
+                    Essence.interact("Mine");
+                    sleep(random(1500, 15000));
+        }
+
+        if(Essence == null)
+        {
+            log("Go forward");
+            //If camera can't find essence, walk north and try again
+            Position pos = new Position( 0, 5, 0);
+           getWalking().walk(pos);
+        }
+    }
+
+
+
+    public void bank(Area bankArea) throws InterruptedException
+    {
+        if (bankArea.contains(myPlayer())) {
+            log("In bank area");
+            Entity bankBooth = objects.closest(10583);
+
+            if (bank.isOpen()) {
+                bank.depositAllExcept(keep1, keep2, keep3, keep4, keep5, keep6);
+            } else {
+                if (bankBooth != null) {
+                    if (bankBooth.isVisible()) {
+                        bankBooth.interact("Bank");
+                        sleep(random(1500, 15000));
+                    }
+                }
+            }
+
+            sleep(random(700, 1500));
+            //walk to bank
+        }
     }
 
     public void antiBan() {

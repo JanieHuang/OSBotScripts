@@ -15,7 +15,7 @@ import java.awt.Graphics2D;
 
 @ScriptManifest(author = "Lexhanatin", name = "EssenceMiner", info = "Just an empty script :(", version = 0.1, logo = "")
 
-public final class EssenceMiner extends Script  {
+public final class main extends Script  {
 
     NPC portalNpc = null;
     RS2Object portalObj = null;
@@ -108,25 +108,18 @@ public final class EssenceMiner extends Script  {
     }
 
     private void bank() throws InterruptedException {
-        log("Bank method");
         if (getObjects().closest("Rune Essence") != null) {
-            log("Rune Essence Exists");
             portalNpc = getNpcs().closestThatContains("Portal");
             portalObj = getObjects().closestThatContains("Portal");
-
-            if (portalNpc != null || portalObj != null) {
-                log("Entity not null");
+        
                 if (portalNpc != null) {
-                    log("Portal is NPC");
                     portalEntity = portalNpc;
                 }
-
-                if (portalObj != null) {
-                    log("Portal is Object");
+                else if (portalObj != null) {
                     portalEntity = portalObj;
                 }
+
                 if (portalEntity != null) {
-                    log("Portal Interaction");
                     if (portalEntity.interact("Exit", "Use")) {
                         new ConditionalSleep(8000) {
                             @Override
@@ -136,10 +129,6 @@ public final class EssenceMiner extends Script  {
                         }.sleep();
                     }
                 }
-            }
-            else {
-                log ("Entity null");
-            }
         }
         else if (!Banks.VARROCK_EAST.contains(myPosition())) {
             getWalking().webWalk(Banks.VARROCK_EAST);
@@ -155,7 +144,4 @@ public final class EssenceMiner extends Script  {
         }
     }
 
-    public void onPaint(Graphics g) {
-        g.drawString("Hello, world!", 10, 10);
-    }
 }

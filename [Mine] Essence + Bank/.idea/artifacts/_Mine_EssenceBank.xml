@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[Mine]EssenceBank">
+    <output-path>$PROJECT_DIR$/out/artifacts/_Mine_EssenceBank</output-path>
+    <root id="archive" name="[Mine]EssenceBank.jar">
+      <element id="module-output" name="[Mine] Essence + Bank" />
+    </root>
+  </artifact>
+</component>
