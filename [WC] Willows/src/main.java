@@ -20,7 +20,7 @@ import java.util.Random;
  * Created by JH Nov 21, 2019
  */
 
-@ScriptManifest(author = "JH", logo = "", info = "Cuts Willows near Draynor bank. Banks upon full inventory", version = 1.0, name = "[Wood] Willow Bank v1.1")
+@ScriptManifest(author = "JH", logo = "", info = "Cuts Willows near Draynor bank. Banks upon full inventory", version = 1.0, name = "[Wood] Willow Bank v1.3")
 public class main extends Script {
     private String interaction = "";
 
@@ -84,9 +84,9 @@ public class main extends Script {
             }
         } else {
             //bank
-            Area bankArea = new Area(3092, 3241, 3092, 3245);
+            Area bankArea = new Area(3091, 3242, 3093, 3245);
             if (bankArea.contains(myPlayer())) {
-                Entity bankBooth = objects.closest(34810);
+                Entity bankBooth = objects.closest(1028);
 
                 if (bank.isOpen()) {
                     bank.depositAllExcept(keep0, keep1, keep2, keep3, keep4, keep5);
