@@ -76,9 +76,6 @@ public class main extends Script {
             i = 0;
         }
         if (!getInventory().isFull()) {
-
-            //Fish
-
             Entity object1 = objects.closest("Oak");
             if (object1 != null) {
                 if (object1.isVisible()) {
@@ -96,7 +93,6 @@ public class main extends Script {
                     }
                 }
 
-                //walk to fish area
             }
         } else {
             //bank
