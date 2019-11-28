@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[WC] Willows + Bank">
+    <output-path>$PROJECT_DIR$/out/artifacts/_WC__Willows___Bank</output-path>
+    <root id="archive" name="[WC] Willows + Bank.jar">
+      <element id="module-output" name="[WC] Willows" />
+    </root>
+  </artifact>
+</component>
