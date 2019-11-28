@@ -20,8 +20,8 @@
       <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="22" column="156" selection-start-line="22" selection-start-column="156" selection-end-line="22" selection-end-column="156" />
+            <state relative-caret-position="246">
+              <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,7 +89,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OSBot/osbot.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../[Mining] Iron Bank" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -164,12 +164,12 @@
       <updated>1574910804239</updated>
       <workItem from="1574910808015" duration="62000" />
       <workItem from="1574911044595" duration="506000" />
-      <workItem from="1574911639452" duration="820000" />
+      <workItem from="1574911639452" duration="1385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1388000" />
+    <option name="totallyTimeSpent" value="1953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1234" height="736" extended-state="0" />
@@ -232,10 +232,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/../OSBot/osbot.jar!/org/osbot/rs07/api/ui/Tab.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="156" selection-start-line="22" selection-start-column="156" selection-end-line="22" selection-end-column="156" />
+        <state relative-caret-position="246">
+          <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

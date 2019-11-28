@@ -18,7 +18,7 @@ import java.util.Random;
  * Created by JH on 11/21/2019
  */
 
-@ScriptManifest(author = "JH", logo = "", info ="Mines Iron till full. Does bank" , version = 1.0 , name = "[Mine] Iron Bank v1.0")
+@ScriptManifest(author = "JH", logo = "", info ="Mines Iron till full. Does bank" , version = 1.0 , name = "[Mine] Iron Bank v1.1")
 public class main extends Script {
 
     private int i =1;
@@ -156,84 +156,7 @@ public class main extends Script {
                 sleep(random(500, 2000));
                 this.tabs.open(Tab.INVENTORY);
             }
-            if ((rand > 6500) && (rand < 7000)) {
-                interaction = "Antiban, Opening Tab + Checking Stats";
-                this.tabs.open(Tab.SKILLS);
-                sleep(random(500, 1000));
-                int stat = generator.nextInt(24);
-                if (stat == 0) {
-                    this.mouse.move(random(568, 588), random(214, 234));
-                }
-                if (stat == 1) {
-                    this.mouse.move(random(568, 588), random(244, 264));
-                }
-                if (stat == 2) {
-                    this.mouse.move(random(568, 588), random(274, 294));
-                }
-                if (stat == 3) {
-                    this.mouse.move(random(568, 588), random(304, 324));
-                }
-                if (stat == 4) {
-                    this.mouse.move(random(568, 588), random(334, 354));
-                }
-                if (stat == 5) {
-                    this.mouse.move(random(568, 588), random(364, 384));
-                }
-                if (stat == 6) {
-                    this.mouse.move(random(568, 588), random(394, 414));
-                }
-                if (stat == 7) {
-                    this.mouse.move(random(568, 588), random(424, 444));
-                }
-                if (stat == 8) {
-                    this.mouse.move(random(638, 658), random(214, 234));
-                }
-                if (stat == 9) {
-                    this.mouse.move(random(638, 658), random(244, 264));
-                }
-                if (stat == 10) {
-                    this.mouse.move(random(638, 658), random(274, 294));
-                }
-                if (stat == 11) {
-                    this.mouse.move(random(638, 658), random(304, 324));
-                }
-                if (stat == 12) {
-                    this.mouse.move(random(638, 658), random(334, 354));
-                }
-                if (stat == 13) {
-                    this.mouse.move(random(638, 658), random(364, 384));
-                }
-                if (stat == 14) {
-                    this.mouse.move(random(638, 658), random(394, 414));
-                }
-                if (stat == 15) {
-                    this.mouse.move(random(638, 658), random(424, 444));
-                }
-                if (stat == 16) {
-                    this.mouse.move(random(708, 728), random(214, 234));
-                }
-                if (stat == 17) {
-                    this.mouse.move(random(708, 728), random(244, 264));
-                }
-                if (stat == 18) {
-                    this.mouse.move(random(708, 728), random(274, 294));
-                }
-                if (stat == 19) {
-                    this.mouse.move(random(708, 728), random(304, 324));
-                }
-                if (stat == 20) {
-                    this.mouse.move(random(708, 728), random(334, 354));
-                }
-                if (stat == 21) {
-                    this.mouse.move(random(708, 728), random(364, 384));
-                }
-                if (stat == 22) {
-                    this.mouse.move(random(708, 728), random(394, 414));
-                }
-                sleep(random(1000, 15000));
-                this.tabs.open(Tab.INVENTORY);
-            }
-            if ((rand > 7000) && (rand < 7200)) {
+            if ((rand > 6500) && (rand < 7200)) {
                 interaction = "Antiban, Opening Tab";
                 this.tabs.open(Tab.SETTINGS);
                 sleep(random(500, 2000));
