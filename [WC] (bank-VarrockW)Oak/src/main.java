@@ -31,9 +31,7 @@ public class main extends Script {
     private String keep3;
     private String keep4;
     private String keep5;
-    GUI g = new GUI();
 
-    public boolean guiWait = true;
     private JComboBox treeToCut;
     private JButton startButton;
     String treeChosen;
@@ -374,75 +372,5 @@ public class main extends Script {
 
 
     }
-
-    class GUI extends JFrame {
-
-
-        private void initComponents() {
-
-
-            treeToCut = new JComboBox();
-            startButton = new JButton();
-
-
-
-        }
-
-        public GUI(){
-            initComponents();
-
-            JFrame frame = new JFrame();
-            Container pane = frame.getContentPane();
-            pane.setLayout(new BorderLayout());
-            String trees []= {"Tree", "Oak", "Willow"};
-            JComboBox box1 = new JComboBox(trees);
-            pane.add(new JButton("Start"), BorderLayout.NORTH);
-            pane.add(box1, BorderLayout.SOUTH);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.pack();
-            frame.setVisible(true);
-
-
-            startButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String chosen = treeToCut.getSelectedItem().toString();
-                    if(chosen.equals("Oak")){
-
-                        treeChosen = "Oak";
-                        guiWait = false;
-                        g.dispose();
-
-                    }else if (chosen.equals("Willow")){
-
-                        treeChosen = "Willow";
-                        guiWait = false;
-                        g.dispose();
-
-                    }else if(chosen.equals(("Tree"))){
-                        treeChosen = "Tree";
-                        guiWait = false;
-                        g.dispose();
-                    }
-
-
-
-
-                    guiWait = false;
-                    g.dispose();
-                }
-
-
-            });
-        }
-
-
-
-
-    }
-
-
-
-
 
 }
