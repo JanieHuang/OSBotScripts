@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="OSBot 2.4.39" level="application" />
     <orderEntry type="library" name="osbot" level="project" />
+    <orderEntry type="library" name="osbot 2.5.60" level="project" />
   </component>
 </module>
