@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[Fish] Fish Picker">
+    <output-path>$PROJECT_DIR$/out/artifacts/_Fish__Fish_Picker</output-path>
+    <root id="archive" name="[Fish] Fish Picker.jar">
+      <element id="module-output" name="[Fish] Fish Picker" />
+    </root>
+  </artifact>
+</component>
