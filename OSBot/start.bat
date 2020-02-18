@@ -1,2 +1,2 @@
-java -jar "osbot 2.5.60.jar"
+java -jar "osbot 2.5.67.jar"
 pause
