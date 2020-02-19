@@ -15,26 +15,13 @@ import java.util.Random;
  * Created by JH on 02/18/2020.
  */
 
-@ScriptManifest(author = "JH", logo = "", info ="Picks Salmon and Trout, Deposits" , version = 1.0 , name = "[Fish]Fish Picker v1.1")
+@ScriptManifest(author = "JH", logo = "", info ="Picks Salmon and Trout, Deposits" , version = 1.3 , name = "[Fish]Fish Picker v1.3")
 public class main extends Script {
 
     private int i =1;
-    private String keep1;
-    private String keep2;
-    private String keep3;
-    private String keep4;
-    private String keep5;
-    private String keep6;
-
     @Override
 
     public void onStart(){
-        this.keep1 = "Rune pickaxe" ;
-        this.keep2 = "Iron pickaxe";
-        this.keep3 = "Steel pickaxe";
-        this.keep4 = "Mithril pickaxe";
-        this.keep5 = "Adamant pickaxe";
-        this.keep6 = "Bronze pickaxe" ;
     }
 
     public void onExit(){
@@ -54,28 +41,24 @@ public class main extends Script {
         }
 
         //Fishing Location 1
-        //Area fishLoc1 = new Area(3103, 3424, 3102, 3426);
-        Area fishLoc2 = new Area(3109, 3431, 3103, 3435);
+        Area fishLoc = new Area(3101, 3425, 3109, 3435);
+
 
         if(!getInventory().isFull()){
             //chop
-            if(fishLoc2.contains(myPlayer()))
+            if(fishLoc.contains(myPlayer()))
             {
                 GroundItem Salmon = getGroundItems().closest("Raw Salmon"); //Raw Salmon Priority
-
+                GroundItem Trout = getGroundItems().closest("Raw Trout"); //Raw Salmon Priority
                 if(Salmon != null) {
                     Salmon.interact("take");
-                } else {
-                    GroundItem Trout = getGroundItems().closest("Raw Trout"); //Raw Salmon Priority
-                    if(Salmon != null) {
-                        Salmon.interact("take");
-                    }
-
+                } else if(Salmon == null && Trout != null){
+                        Trout.interact("take");
                 }
 
             } else
             {
-                getWalking().webWalk(fishLoc2);
+                getWalking().webWalk(fishLoc);
             }
 
         }
