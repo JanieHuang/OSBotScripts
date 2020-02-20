@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[Cow] Cow Picker">
+    <output-path>$PROJECT_DIR$/out/artifacts/_Cow__Cow_Picker</output-path>
+    <root id="archive" name="[Cow] Cow Picker.jar">
+      <element id="module-output" name="[Cow] Cow Picker" />
+    </root>
+  </artifact>
+</component>
