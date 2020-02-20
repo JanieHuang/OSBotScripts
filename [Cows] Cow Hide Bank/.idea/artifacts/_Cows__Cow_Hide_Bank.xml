@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[Cows] Cow Hide Bank">
+    <output-path>$PROJECT_DIR$/out/artifacts/_Cows__Cow_Hide_Bank</output-path>
+    <root id="archive" name="[Cows] Cow Hide Bank.jar">
+      <element id="module-output" name="[Cows] Cow Hide Bank" />
+    </root>
+  </artifact>
+</component>
